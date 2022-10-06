@@ -1,14 +1,21 @@
 import axios from 'axios';
 
-const API_KEY = '261044873aed5478268883353392d3c3';
-axios.defaults.baseURL = 'https://www.themoviedb.org/3';
+const API_KEY = '171815f7c9e508fe2a53a40eb2dd3583';
+const BASE_URL = 'https://www.themoviedb.org/3';
+
+const instance = axios.create({
+  baseURL: BASE_URL,
+  params: {
+    api_key: API_KEY,
+  },
+});
 
 export const getSearchMovies = async query => {
   try {
-    const response = await axios.get(
-      `/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${query}&include_adult=true`
-    );
-    return response.data.results;
+    const response = await instance.get('/search/movie', {
+      params: query,
+    });
+    return response;
   } catch (error) {
     console.log(error.message);
   }
@@ -16,14 +23,15 @@ export const getSearchMovies = async query => {
 
 export const getTrendingMovies = async () => {
   try {
-    const response = await axios.get(`/trending/all/week?api_key=${API_KEY}`);
-    return response.data.results;
+    const response = await instance.get('/trending/movie/day');
+    const { data } = response;
+    return data;
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export const getDetailsMovies = async filmId => {
+/* export const getDetailsMovies = async filmId => {
   try {
     const response = await axios.get(
       `/movie/${filmId}?api_key=${API_KEY}&language=en-US`
@@ -54,4 +62,4 @@ export const getReviewsMovies = async filmId => {
   } catch (error) {
     console.log(error.message);
   }
-};
+}; */
