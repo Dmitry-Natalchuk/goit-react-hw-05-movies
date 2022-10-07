@@ -3,7 +3,7 @@ import { Formik,Field,Form } from 'formik';
 export const MoviesForm = ({ onSubmit, value }) => {
     return (
       <Formik
-        initialValues={{ query: value ?? '' }}
+        initialValues={{ query: value ?? "" }}
         onSubmit={values => {
           onSubmit(values);
         }}
