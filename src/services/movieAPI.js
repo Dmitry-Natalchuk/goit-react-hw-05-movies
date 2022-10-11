@@ -11,51 +11,30 @@ const instance = axios.create({
 });
 
 export const getSearchMovies = async query => {
-  try {
-    const response = await instance.get('/search/movie', {
-      params: query,
-    });
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { data } = await instance.get('/search/movie', {
+    params: {
+      query,
+    },
+  });
+  return data.results;
 };
 
 export const getTrendingMovies = async () => {
-  try {
-    const response = await instance.get('/trending/movie/day');
-    const { data } = response;
-    console.log(response);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { data } = await instance.get('/trending/movie/day');
+  return data;
 };
 
 export const getMoviesDetails = async movieId => {
-  try {
-    const response = await instance.get(`/movies/${movieId}`);
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { data } = await instance.get(`/movie/${movieId}`);
+  return data;
 };
 
 export const getMoviesCast = async movieId => {
-  try {
-    const response = await instance.get(`/movies/${movieId}/cast`);
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { data } = await instance.get(`/movie/${movieId}/credits`);
+  return data;
 };
 
 export const getMoviesReviews = async movieId => {
-  try {
-    const response = await instance.get(`/movies/${movieId}/reviews`);
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { data } = await instance.get(`/movie/${movieId}/reviews`);
+  return data;
 };
