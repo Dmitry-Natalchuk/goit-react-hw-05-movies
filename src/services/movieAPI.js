@@ -24,17 +24,17 @@ export const getTrendingMovies = async () => {
   return data;
 };
 
-export const getMoviesDetails = async movieId => {
-  const { data } = await instance.get(`/movie/${movieId}`);
+export const getMoviesDetails = async id => {
+  const { data } = await instance.get(`/movie/${id}`);
   return data;
 };
 
-export const getMoviesCast = async movieId => {
-  const { data } = await instance.get(`/movie/${movieId}/credits`);
+export const getMoviesCast = async id => {
+  const { data } = await instance.get(`/movie/${id}/credits`);
   return data;
 };
 
-export const getMoviesReviews = async movieId => {
-  const { data } = await instance.get(`/movie/${movieId}/reviews`);
+export const getMoviesReviews = async id => {
+  const { data } = await instance.get(`/movie/${id}/reviews`);
   return data;
 };
