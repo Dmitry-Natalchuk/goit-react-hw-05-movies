@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { MovieGallery } from "components/MoviesGallery/MoviesGallery";
 import { getTrendingMovies } from "services/movieAPI";
-import { Loader } from "components/Loader/Loader";
+import Loader from "components/Loader/Loader";
 
 
-export const Home = () => {
+const Home = () => {
     const [movies,setMovies] = useState([]);
     const [loading,setLoading] = useState(false)
 
@@ -35,3 +35,4 @@ export const Home = () => {
         </>
     )
 }
+export default Home

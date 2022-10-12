@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { FormMovies } from "./FormMovies/FormMovies";
 import { getSearchMovies } from "services/movieAPI";
 import { MovieGallery } from "components/MoviesGallery/MoviesGallery";
-import { Loader } from "components/Loader/Loader";
+import Loader from "components/Loader/Loader";
 
 
 export const SearchMovies = () => {

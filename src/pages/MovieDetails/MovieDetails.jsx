@@ -2,7 +2,7 @@ import { useParams, useNavigate, Link,Outlet,useLocation } from "react-router-do
 
 import { Details } from "components/Details/Details";
 
-export const MovieDetails = () => {
+ const MovieDetails = () => {
     const {id} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,3 +28,4 @@ export const MovieDetails = () => {
         </div>
     );
 }
+export default MovieDetails

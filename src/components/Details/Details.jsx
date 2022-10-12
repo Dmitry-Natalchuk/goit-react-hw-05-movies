@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import { getMoviesDetails } from "services/movieAPI"
 import { getPosterImg } from "services/defaultPoster";
-import { Loader } from "components/Loader/Loader";
+import  Loader from "components/Loader/Loader";
 import PropTypes from 'prop-types'; 
 
 export const Details = ({id}) => {

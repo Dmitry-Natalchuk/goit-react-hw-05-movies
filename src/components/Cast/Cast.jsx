@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { getMoviesCast } from "services/movieAPI"
 import { getPosterImg } from "services/defaultPoster"
-import { Loader } from "components/Loader/Loader";
+import Loader from "components/Loader/Loader";
 
-export const Cast = () => {
+const Cast = () => {
     const [cast,setCast] = useState([])
     const [loading,setLoading] = useState(false)
 
@@ -50,3 +50,4 @@ return (
      )
 
 }
+export default Cast
