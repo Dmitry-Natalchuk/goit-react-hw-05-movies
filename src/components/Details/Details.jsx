@@ -3,42 +3,50 @@ import { getMoviesDetails } from "services/movieAPI"
 import { getPosterImg } from "services/defaultPoster";
 import { Loader } from "components/Loader/Loader";
 import PropTypes from 'prop-types'; 
-import { Outlet } from "react-router-dom";
 
 export const Details = ({id}) => {
-    const [movies,setMovies] = useState({});
-    const [loading,setLoading] = useState(false)
-
-    useEffect(()=> {
-        const fetchItems = async () => {
-        const data = getMoviesDetails(id)
-        setLoading(true)
-        try{
-            setMovies({...data})
-            setLoading(false)
-        }catch(error) {
-            console.log(error.message);
-            setLoading(false)
-         }
+    const [movie, setMovie] = useState({
+        content: {},
+        loading: false
+    });
+    
+    useEffect(() => {
+        const fetchMovie = async () => {
+            const data = await getMoviesDetails(id);
+            setMovie(prevState => ({ 
+                ...prevState,
+                 loading: true }));
+            try {
+                setMovie(prevState => ({ 
+                    ...prevState, 
+                    content: { ...data},
+                     loading: false }));;
+            } catch (error) {
+                setMovie(prevState => ({ 
+                    ...prevState, 
+                    loading: true}));
+            }
         }
-        fetchItems()
-    },[id])
+        fetchMovie();
+    }, [id]);
+
+    const { content, loading } = movie;
+    const isMovie = Boolean(Object.values(content).length);
 
     const {poster_path,
         original_title,
         release_date,
         vote_average,
         overview,
-        genres} = movies 
+        genres} = content
 
-        const isMovie = Boolean(Object.values(movies).length);
     return (
         <div>
             {loading && <Loader />}
             {isMovie && ( 
                 <div>
                     <div>
-                        <img src={getPosterImg(poster_path)} alt={original_title}/>
+                        <img src={getPosterImg(poster_path)} alt={original_title} width={200}/>
                     </div>
                     <div>
                         <h2>
@@ -52,7 +60,6 @@ export const Details = ({id}) => {
                     </div>
                 </div>
             )}
-            <Outlet />
         </div>
     );
 
