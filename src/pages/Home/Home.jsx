@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MovieGallery } from "components/MoviesGallery/MoviesGallery";
 import { getTrendingMovies } from "services/movieAPI";
 import Loader from "components/Loader/Loader";
+import s from "./Home.module.css"
 
 
 const Home = () => {
@@ -27,7 +28,7 @@ const Home = () => {
         <>
          {Boolean(movies.length) && (
                 <div>
-                    <h2>Today's Trending Movies</h2>
+                    <h2 className={s.title}>Today's Trending Movies</h2>
                     {loading && <Loader />}
                     <MovieGallery items={movies}/>
                 </div>

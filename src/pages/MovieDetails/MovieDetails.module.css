@@ -1,0 +1,41 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: inherit;
+    color: rgb(25, 0, 255);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+
+}
+.btn:hover {
+    color: yellow;
+    transform: scale(1.4);
+    background-color: rgb(25, 0, 255);
+    border-radius: 50%;
+}
+
+.container{
+    border-bottom: 2px solid rgb(51 39 159);
+    padding: 20px;
+}
+
+.title {
+    margin-bottom: 30px;
+    padding-left: 15px;
+}
+
+.list{
+    padding-left: 15px;
+}
+
+.item{
+    font-size: 30px;
+}
+
+.item:hover {
+    color: rgb(25, 0, 255);
+}

@@ -1,0 +1,21 @@
+.container{
+    border-bottom: 2px solid rgb(51 39 159);
+    display: flex;
+    padding: 15px;
+}
+
+.poster {
+    min-width: 350px;
+}
+
+.desc {
+    margin-left: 15px;
+}
+
+.title {
+    margin-top: 40px;
+}
+.text {
+    margin-top: 15px;
+
+}

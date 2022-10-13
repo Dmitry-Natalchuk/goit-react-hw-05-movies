@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { getMoviesReviews } from "services/movieAPI";
 import Loader from "components/Loader/Loader";
+import s from "./Reviews.module.css"
 
 const Reviews = () => {
     const [reviews,setReviews] = useState([])
@@ -27,19 +28,21 @@ const Reviews = () => {
     return (
         <>
         {loading && <Loader />}
+        <div className={s.container}>
             {Boolean(Object.values(reviews).length) > 0 ? (
-                <ul>
+                <ul className={s.list}>
                     {reviews.map(({id, author, content}) => 
-                    <li key={id}>
-                        <h2>{author}</h2>
-                        <p>{content}</p>
+                    <li key={id} className = {s.item}>
+                        <h2 className={s.author}>{author}</h2>
+                        <p className={s.text}>{content}</p>
                     </li> 
                 )}
                 </ul>
             ) : (
-                <p>We don't have any reviews for this movie</p>
+                <p className={s.alternative}>We don't have any reviews for this movie</p>
             )
             }
+        </div>
         </>
     )
 }

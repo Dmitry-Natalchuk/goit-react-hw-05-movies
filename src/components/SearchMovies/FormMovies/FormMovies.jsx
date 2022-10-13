@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import s from "./FormMovies.module.css"
 
 
 export const FormMovies = ({ onSubmit }) => {
@@ -10,13 +11,14 @@ export const FormMovies = ({ onSubmit }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={(event) => {
+        <div className={s.container}>
+            <form className={s.form} onSubmit={(event) => {
                 event.preventDefault()
                 onSubmit(query)
                 setQuery("")
             }}>
                 <input
+                    className={s.input}
                     value={query}
                     name="query"
                     onChange={changInput}

@@ -1,0 +1,25 @@
+.container{
+    padding: 30px;
+}
+
+.author{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.item {
+    padding: 20px;
+    border: 2px solid #fffb01;
+}
+
+.alternative {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}

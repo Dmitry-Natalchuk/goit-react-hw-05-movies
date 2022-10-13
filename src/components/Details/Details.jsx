@@ -3,6 +3,7 @@ import { getMoviesDetails } from "services/movieAPI"
 import { getPosterImg } from "services/defaultPoster";
 import  Loader from "components/Loader/Loader";
 import PropTypes from 'prop-types'; 
+import s from "./Details.module.css"
 
 export const Details = ({id}) => {
     const [movie, setMovie] = useState({
@@ -41,26 +42,26 @@ export const Details = ({id}) => {
         genres} = content
 
     return (
-        <div>
+        <>
             {loading && <Loader />}
             {isMovie && ( 
-                <div>
-                    <div>
-                        <img src={getPosterImg(poster_path)} alt={original_title} width={200}/>
+                <div className={s.container}>
+                    <div className={s.poster}>
+                        <img src={getPosterImg(poster_path)} alt={original_title} />
                     </div>
-                    <div>
+                    <div className={s.desc}>
                         <h2>
                             {original_title} ({release_date.slice(0, 4)})
                         </h2>
-                        <p>User Score: {Math.round((vote_average / 10) * 100)}%</p>
-                        <h3>Overview:</h3>
+                        <p className={s.text}>User Score: {Math.round((vote_average / 10) * 100)}%</p>
+                        <h3 className={s.title}>Overview:</h3>
                         <p>{overview}</p>
-                        <h3>Genres:</h3>
+                        <h3 className={s.title}>Genres:</h3>
                         <p>{genres.map(genre => genre.name).join(', ')}</p>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 
 }
